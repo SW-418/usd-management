@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package studio.assets;
+
+message AssetMetadata {
+  string id = 1;
+  string name = 2;
+  string type = 3;
+  int64 version = 4;
+  string description = 5;
+}
+
+message ListAssetsRequest {}
+
+message ListAssetsResponse {
+  repeated AssetMetadata assets = 1;
+}
+
+service AssetService {
+  rpc ListAssets(ListAssetsRequest) returns (ListAssetsResponse);
+}
