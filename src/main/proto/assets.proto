@@ -16,6 +16,16 @@ message ListAssetsResponse {
   repeated AssetMetadata assets = 1;
 }
 
+message GetAssetRequest {
+  string id = 1;
+}
+
+message GetAssetResponse {
+  bytes data = 1;
+  string format = 2;
+}
+
 service AssetService {
   rpc ListAssets(ListAssetsRequest) returns (ListAssetsResponse);
+  rpc GetAsset(GetAssetRequest) returns (GetAssetResponse);
 }
