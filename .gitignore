@@ -2,4 +2,5 @@
 .idea
 build
 .gradle
-scripts/generated/**
+scripts/**pb2**
+**__pycache__

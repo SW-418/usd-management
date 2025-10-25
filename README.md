@@ -9,6 +9,6 @@ Tooling for learning about asset management and USD.
 
 `./gradlew build` - Generates Assets+Assets svc to be used on the Java side
 
-Generate gRPC contracts for use on Python side (run from `/src/main/proto` dir)
+Generate gRPC contracts for use on Python side (run from root dir)
 
-`python -m grpc_tools.protoc -I . --python_out=../../../scripts --grpc_python_out=../../../scripts assets.proto`
+`python -m grpc_tools.protoc -Iscripts=src/main/proto --python_out=. --grpc_python_out=. src/main/proto/assets.proto`
