@@ -1,6 +1,7 @@
 package samwells.io.usd_management.service;
 
 import com.google.protobuf.ByteString;
+import com.google.protobuf.util.Timestamps;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.grpc.server.service.GrpcService;
@@ -9,6 +10,7 @@ import studio.assets.Assets;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,7 +29,7 @@ public class AssetService extends AssetServiceGrpc.AssetServiceImplBase {
                 .addAllAssets(List.of(
                         createAsset("Asset 1", "MODEL", "Testy 1"),
                         createAsset("Asset 2", "MODEL", "Testy 2"),
-                        createAsset("Asset 3", "MODEL", "Testy 3")
+                        createAsset("SCENE 1", "SCENE", "Testy Scene 1")
                 ))
                 .build();
 
@@ -57,6 +59,7 @@ public class AssetService extends AssetServiceGrpc.AssetServiceImplBase {
                 .setType(type)
                 .setVersion(1)
                 .setDescription(description)
+                .setCreatedAt(Timestamps.fromMillis(Instant.now().toEpochMilli()))
                 .build();
     }
 
