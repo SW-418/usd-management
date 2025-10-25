@@ -11,4 +11,4 @@ Tooling for learning about asset management and USD.
 
 Generate gRPC contracts for use on Python side (run from `/src/main/proto` dir)
 
-`python -m grpc_tools.protoc -I . --python_out=../../../scripts/generated --grpc_python_out=../../../scripts/generated assets.proto`
+`python -m grpc_tools.protoc -I . --python_out=../../../scripts --grpc_python_out=../../../scripts assets.proto`

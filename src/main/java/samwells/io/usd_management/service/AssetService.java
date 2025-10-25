@@ -23,10 +23,10 @@ public class AssetService extends AssetServiceGrpc.AssetServiceImplBase {
                 .build();
         var a2 = Assets.AssetMetadata.newBuilder()
                 .setId(UUID.randomUUID().toString())
-                .setName("Asset 1")
+                .setName("Asset 2")
                 .setType("MODEL")
                 .setVersion(1)
-                .setDescription("Testy 1")
+                .setDescription("Testy 2")
                 .build();
 
         var response = Assets.ListAssetsResponse.newBuilder()
