@@ -23,24 +23,12 @@ public class AssetService extends AssetServiceGrpc.AssetServiceImplBase {
 
     @Override
     public void listAssets(Assets.ListAssetsRequest request, StreamObserver<Assets.ListAssetsResponse> responseObserver) {
-
-        var a1 = Assets.AssetMetadata.newBuilder()
-                .setId(UUID.randomUUID().toString())
-                .setName("Asset 1")
-                .setType("MODEL")
-                .setVersion(1)
-                .setDescription("Testy 1")
-                .build();
-        var a2 = Assets.AssetMetadata.newBuilder()
-                .setId(UUID.randomUUID().toString())
-                .setName("Asset 2")
-                .setType("MODEL")
-                .setVersion(1)
-                .setDescription("Testy 2")
-                .build();
-
         var response = Assets.ListAssetsResponse.newBuilder()
-                .addAllAssets(List.of(a1, a2))
+                .addAllAssets(List.of(
+                        createAsset("Asset 1", "MODEL", "Testy 1"),
+                        createAsset("Asset 2", "MODEL", "Testy 2"),
+                        createAsset("Asset 3", "MODEL", "Testy 3")
+                ))
                 .build();
 
         responseObserver.onNext(response);
@@ -62,6 +50,17 @@ public class AssetService extends AssetServiceGrpc.AssetServiceImplBase {
         responseObserver.onCompleted();
     }
 
+    private Assets.AssetMetadata createAsset(String name, String type, String description) {
+        return Assets.AssetMetadata.newBuilder()
+                .setId(UUID.randomUUID().toString())
+                .setName(name)
+                .setType(type)
+                .setVersion(1)
+                .setDescription(description)
+                .build();
+    }
+
+    // This is here temp as we'll probably start storing and updating these elsewhere
     private byte[] readResourceFile(String fileName) {
         try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(fileName)) {
             if (inputStream == null) throw new IllegalArgumentException("Resource not found: " + fileName);
