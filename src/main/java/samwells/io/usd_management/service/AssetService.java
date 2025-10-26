@@ -39,7 +39,7 @@ public class AssetService extends AssetServiceGrpc.AssetServiceImplBase {
 
     @Override
     public void getAsset(Assets.GetAssetRequest request, StreamObserver<Assets.GetAssetResponse> responseObserver) {
-        log.info("Got request for asset {}", request.getId());
+        log.info("Got request for asset {} V{}", request.getId(), request.getVersion());
 
         Assets.GetAssetResponse response = Assets
                 .GetAssetResponse
